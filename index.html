@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DELL UNIVERSITY</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      color: #222;
+      background: #f0f4f8;
+      overflow-x: hidden;
+    }
+    a {
+      color: #f3f4f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #FFC107;
+      text-decoration: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: #004080;
+      color: #fff;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+      animation: slideDown 0.6s ease forwards;
+    }
+    @keyframes slideDown {
+      0% {transform: translateY(-100%);}
+      100% {transform: translateY(0);}
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      user-select: none;
+      cursor: default;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+    }
+    nav li {
+      position: relative;
+    }
+    nav li a {
+      padding: 5px 8px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    nav li a:hover, nav li a:focus {
+      background-color: rgba(255, 255, 255, 0.25);
+      outline: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.55);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      opacity: 0;
+      animation: fadeInUp 1.5s forwards;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color:#FFC107;
+    }
+
+    /* Sections */
+    section {
+      background: #fff;
+      margin: 40px 0;
+      padding: 30px 30px 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgb(0 0 0 / 0.12);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 0.3s;
+    }
+    section:nth-of-type(2) { animation-delay: 0.3s; }
+    section:nth-of-type(3) { animation-delay: 0.5s; }
+    section:nth-of-type(4) { animation-delay: 0.7s; }
+    section:nth-of-type(5) { animation-delay: 0.9s; }
+    section:nth-of-type(6) { animation-delay: 1.1s; }
+    section:nth-of-type(7) { animation-delay: 1.3s; }
+    section:nth-of-type(8) { animation-delay: 1.5s; }
+    section:nth-of-type(9) { animation-delay: 1.7s; }
+    section h2 {
+      margin-bottom: 20px;
+      color: #004080;
+      border-bottom: 4px solid #1a73e8;
+      padding-bottom: 6px;
+      max-width: max-content;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    section p, section ul {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    ul {
+      margin-top: 12px;
+      list-style-type: disc;
+      margin-left: 24px;
+      column-count: 2;
+      column-gap: 45px;
+    }
+    ul li {
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    ul li:hover {
+      transform: translateX(8px);
+      color: #1a73e8;
+    }
+    /* Single column on smaller screens */
+    @media (max-width: 768px) {
+      ul {
+        column-count: 1;
+      }
+    }
+
+    /* Contact form */
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 450px;
+      margin-top: 20px;
+      user-select: none;
+    }
+    label {
+      margin: 12px 0 6px;
+      font-weight: 700;
+      color: #004080;
+    }
+    input, textarea {
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #1a73e8;
+      box-shadow: 0 0 8px rgba(26, 115, 232, 0.5);
+    }
+    button {
+      margin-top: 20px;
+      padding: 14px;
+      background: #1a73e8;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 12px rgba(26, 115, 232, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: #004080;
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer */
+    footer {
+      background: #004080;
+      color: #d0e2ff;
+      padding: 25px 0;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 0.8px;
+      user-select: none;
+      box-shadow: inset 0 4px 6px rgba(0,0,0,0.2);
+    }
+    footer a {
+      color: #9fcdff;
+      margin: 0 12px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer a:hover, footer a:focus {
+      color: #fff;
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #003060;
+        position: absolute;
+        right: 20px;
+        top: 60px;
+        width: 180px;
+        border-radius: 8px;
+        display: none;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        user-select: none;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav li {
+        padding: 14px 16px;
+      }
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+        user-select: none;
+      }
+    }
+    @media (min-width: 769px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">VESTAR COLLEGE</div>
+      <nav>
+        <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">&#9776;</div>
+        <ul id="nav-menu" role="menu">
+          <li role="none"><a href="#about" role="menuitem" tabindex="0">About Us</a></li>
+          <li role="none"><a href="#programs" role="menuitem" tabindex="0">Academic Programs</a></li>
+          <li role="none"><a href="#admissions" role="menuitem" tabindex="0">Admissions</a></li>
+          <li role="none"><a href="#research" role="menuitem" tabindex="0">Research & Innovation</a></li>
+          <li role="none"><a href="#campus" role="menuitem" tabindex="0">Campus Life</a></li>
+          <li role="none"><a href="#placements" role="menuitem" tabindex="0">Placements</a></li>
+          <li role="none"><a href="#international" role="menuitem" tabindex="0">International Students</a></li>
+          <li role="none"><a href="#contact" role="menuitem" tabindex="0">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" role="banner">
+    <div class="hero-content">
+      <h1> WELCOME TO VESTAR COLLEGE</h1>
+      <p>Empowering students through quality education, innovation, and research since 1950.</p>
+    </div>
+  </section>
+
+  <section id="about" class="container" tabindex="-1">
+    <h2>About Us</h2>
+    <p>Vestar College was established in 1950 with the vision to foster excellence in education and research. Accredited by top educational bodies, our mission is to nurture talent, encourage innovation, and contribute to societal development.</p>
+  </section>
+
+  <section id="programs" class="container" tabindex="-1">
+    <h2>Academic Programs</h2>
+    <ul class="program-list">
+      <li><strong>Undergraduate:</strong> B.Sc, B.A, B.Com, B.Tech</li>
+      <li><strong>Postgraduate:</strong> M.Sc, M.A, M.Com, M.Tech</li>
+      <li><strong>Research:</strong> Ph.D. in Sciences, Arts, Commerce, and Engineering</li>
+      <li><strong>Departments:</strong> Physics, Chemistry, Computer Science, English, Business, Engineering</li>
+    </ul>
+  </section>
+
+  <section id="admissions" class="container" tabindex="-1">
+    <h2>Admissions</h2>
+    <p>We welcome applications from eligible candidates every year. Please review the admission procedures, eligibility criteria, and important dates below.</p>
+    <ul>
+      <li>Admission Procedure: Online application via <a href="https://nasccbe.ac.in" target="_blank" rel="noopener">nasccbe.ac.in</a></li>
+      <li>Eligibility: Minimum 50% in qualifying exams</li>
+      <li>Application Deadline: August 31</li>
+      <li>Entrance Exams: Required for some programs</li>
+    </ul>
+  </section>
+
+  <section id="research" class="container" tabindex="-1">
+    <h2>Research & Innovation</h2>
+    <ul class="research-list">
+      <li>Active research centers in Biotechnology and Computer Science</li>
+      <li>Faculty published over 100 papers last year</li>
+      <li>Innovation labs supporting student projects and startups</li>
+    </ul>
+  </section>
+
+  <section id="campus" class="container" tabindex="-1">
+    <h2>Campus Life</h2>
+    <ul class="campus-life-list">
+      <li>Student Clubs: Drama, Music, Debate, Robotics</li>
+      <li>Sports Facilities: Cricket, Football, Basketball courts</li>
+      <li>Library with over 50,000 books and journals</li>
+      <li>Hostel accommodation and cafeteria services</li>
+    </ul>
+  </section>
+
+  <section id="placements" class="container" tabindex="-1">
+    <h2>Placements</h2>
+    <ul class="placement-list">
+      <li>Dedicated placement cell collaborating with industries</li>
+      <li>Top recruiters: Infosys, TCS, Wipro, Google</li>
+      <li>Over 85% placement rate last year</li>
+      <li>Workshops on interview skills and resume building</li>
+    </ul>
+  </section>
+
+  <section id="international" class="container" tabindex="-1">
+    <h2>International Students</h2>
+    <ul class="international-list">
+      <li>Special admission process for international applicants</li>
+      <li>Support services: visa guidance, orientation, language classes</li>
+      <li>Collaborations with universities worldwide</li>
+      <li>Visit <a href="https://nasccbe.ac.in/study-in-india" target="_blank" rel="noopener">nasccbe.ac.in</a> for details</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="container" tabindex="-1">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:vestarcollege.edu">vestarcollege.edu</a></p>
+      <p>Phone: +1 (555) 123-4567</p>
+      <p>Address: 123 College Ave, Education City, State, Country</p>
+    </div>
+    <form aria-label="Contact form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Vestar College | <a href="#contact">Contact</a> | <a href="#about">About Us</a>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Close mobile menu on link click (optional)
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+      });
+    });
+  </script>
+</body>
+</html>
